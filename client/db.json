@@ -1,0 +1,111 @@
+{
+  "user": [
+    {
+      "username": "dsjdxkjjlzsfjdk,xj",
+      "email": ";lfsdkjfsjfd.kx,j",
+      "password": ";ldkjfsj.dfkx,j",
+      "phoneNumber": "dxkjdlfkdx,mfn",
+      "id": 1
+    },
+    {
+      "email": "kj@mail.com",
+      "password": "123",
+      "Confirm": "123",
+      "id": 2
+    }
+  ],
+  "Sarvices": [
+    {
+      "id": 1,
+      "title": "Day Services",
+      "image": "https://images.seattletimes.com/wp-content/uploads/2018/11/cleaning_1111.jpg?d=780x520",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 2,
+      "title": "Night Services",
+      "image": "https://blog.resortchoice.com/wp-content/uploads/2021/02/cleaning-image.jpg",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 3,
+      "image": "https://images.seattletimes.com/wp-content/uploads/2018/11/cleaning_1111.jpg?d=780x520",
+      "title": "4 hours + 1 hours free",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 4,
+      "image": "https://www.pristinehome.com.au/wp-content/uploads/2018/11/Benefits-of-Having-Your-Home-Cleaned-by-a-Professional-Cleaner.jpg",
+      "title": "every time",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 5,
+      "image": "https://janiking.ca/wp-content/uploads/2019/06/Green-floor-cleaning.jpg",
+      "title": "Day Services",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 6,
+      "image": "https://nextdaycleaning.com/wp-content/uploads/2020/06/Main-Benefits-of-Residential-Cleaning-Services-1024x663.jpg",
+      "title": "Night Services",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 7,
+      "image": "https://www.denverhousecleaningpros.com/wp-content/uploads/2019/03/mississippi-residential-cleaning-service.jpg",
+      "title": "4 hours + 1 hours free",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 8,
+      "image": "https://bookdirtbusters.com/wp-content/uploads/2020/10/house-cleaning-service.jpeg",
+      "title": "every time",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 9,
+      "image": "https://irp.cdn-website.com/96fcbcdd/dms3rep/multi/spring+3.jpg",
+      "title": "Day Services",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 10,
+      "image": "https://interior.tn/wp-content/uploads/2022/06/How-much-does-it-cost-to-get-a-room-clean.jpg",
+      "title": "Night Services",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 11,
+      "image": "https://smesouthafrica.co.za/wp-content/uploads/2022/09/shutterstock_395463352-1024x683.jpg",
+      "title": "4 hours + 1 hours free",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    },
+    {
+      "id": 12,
+      "image": "https://insights.workwave.com/wp-content/uploads/2020/03/concept-of-quality-cleaning-picture-id1184689521.jpg",
+      "title": "every time",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima iusto earum maiores at rem, facere dicta suscipit."
+    }
+  ],
+  "MyData": [
+    {
+      "id": 1,
+      "image": "https://nz.rs-cdn.com/images/nwsob-6mcd5/feature/aa5b5ed68708e22f472db166068a983b__3830/hcrop1920x1106@stretch.jpg",
+      "title": "Hourly Cleaning",
+      "description": "Awesome site. on the top advertising a business online includes assembling Having the most keep."
+    },
+    {
+      "id": 2,
+      "image": "https://www.the-cleaning-company.co.uk/wp-content/uploads/2018/02/Cleaning-Equipment-87300736.jpg",
+      "title": "One Visit",
+      "description": "Awesome site. on the top advertising a business online includes assembling Having the most keep."
+    },
+    {
+      "id": 3,
+      "image": "https://bookdirtbusters.com/wp-content/uploads/2020/10/house-cleaning-service.jpeg",
+      "title": "Holiday package",
+      "description": "Awesome site. on the top advertising a business online includes assembling Having the most keep."
+    }
+  ]
+}
