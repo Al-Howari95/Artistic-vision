@@ -76,7 +76,7 @@ const Header = () => {
               >
                 Contact
               </Link>
-              <Link to="/Oss" className="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">Book now</Link>
+              <Link to="/BookNow" className="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">Book now</Link>
             </div>
             <div className="relative mx-auto text-gray-600 lg:block hidden">
               <input

@@ -10,6 +10,8 @@ import Login from "./Pages/Login";
 import Registration from "./Pages/Registration";
 import ContactUs from "./Pages/ContactUs";
 import Categores from "./Pages/Categores";
+import Detelis from "./Pages/Detelis";
+import BookNow from "./Pages/BookNow";
 
 
 
@@ -27,7 +29,10 @@ function App() {
           <Route path="/Registration" element={<Registration/>} />
           <Route path="/ContactUs" element={<ContactUs/>} />
           <Route path="/Categores" element={<Categores/>} />
-          {/* <Route path="/Categores" element={<Categores/>} /> */}
+          <Route path="/Detelis/:id" element={<Detelis/>} />
+          <Route path="/BookNow" element={<BookNow/>} />
+          
+
         </Routes>
 
         <Footer />

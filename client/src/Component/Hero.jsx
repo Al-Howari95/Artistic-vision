@@ -37,7 +37,7 @@ const Hero = () => {
             <div className="hero-text">
               <h1>Welcome to Our Awesome Website</h1>
               <p>Discover amazing features and services that await you.</p>
-              <Link to ="/">
+              <Link to ="/BookNow">
                 <button className="bn632-hover bn28" id="button">Book Now</button>
               </Link>
             </div>
@@ -48,7 +48,7 @@ const Hero = () => {
             <div className="hero-text">
               <h1>Welcome to Our Awesome Website</h1>
               <p>Discover amazing features and services that await you.</p>
-              <Link to ="/">
+              <Link to ="/BookNow">
                 <button className="bn632-hover bn28" id="button">Book Now</button>
               </Link>
             </div>
@@ -59,7 +59,7 @@ const Hero = () => {
             <div className="hero-text">
               <h1>Welcome to Our Awesome Website</h1>
               <p>Discover amazing features and services that await you.</p>
-              <Link to ="/">
+              <Link to ="/BookNow">
                 < button className="bn632-hover bn28" id="button" >Book Now </button>
               </Link>
             </div>

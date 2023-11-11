@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const Oss = () => {
+const Oss  = () => {
 
   useEffect(() => {
     AOS.init();
@@ -34,7 +34,7 @@ const Oss = () => {
          Ordering our service now is your first step towards enjoying a spotless and refreshing living space. At our cleaning website, we prioritize your convenience and satisfaction. With just a few clicks, you can schedule a professional cleaning service that fits your needs and busy lifestyle. Our experienced team of cleaning experts will arrive promptly and transform your home into a pristine haven, allowing you to reclaim your precious time and energy for the things that matter most to you. Say goodbye to the hassle of cleaning chores and hello to a cleaner, more comfortable environment. Order our service today, and relish the peace of mind that comes with a sparkling home.
           </p>
           <div className="mt-8">
-          <Link to="/">
+          <Link to="/BookNow">
          <button class="bn632-hover bn28" id="button">Book Now</button>
          </Link> 
           </div>
@@ -47,4 +47,4 @@ const Oss = () => {
   )
 }
 
-export default Oss
+export default Oss 

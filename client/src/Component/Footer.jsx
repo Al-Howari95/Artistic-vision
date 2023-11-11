@@ -123,18 +123,18 @@ const Footer = () => {
                   {" "}
                   About Us{" "}
                 </Link>
-                <a className="hover:opacity-75" href="">
+                <Link className="hover:opacity-75" to="/Categores">
                   {" "}
-                  Services{" "}
-                </a>
-                <a className="hover:opacity-75" href="">
+                  Services{""}
+                </Link>
+                <Link className="hover:opacity-75" to="/">
                   {" "}
-                  Community{" "}
-                </a>
-                <a className="hover:opacity-75" href="">
+                  Home{" "}
+                </Link>
+                <Link className="hover:opacity-75" to="/ContactUs">
                   {" "}
-                  Testimonial{" "}
-                </a>
+                  ContactUs{" "}
+                </Link>
               </nav>
             </div>
             <div>
@@ -206,7 +206,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="mt-8 text-xs text-gray-800">© 2023 Cleaning</p>
+        <p className="mt-8 text-xs text-gray-800">© 2023 CleanWave</p>
       </div>
     </footer>
   </>
