@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -10,8 +9,9 @@ import Login from "./Pages/Login";
 import Registration from "./Pages/Registration";
 import ContactUs from "./Pages/ContactUs";
 import Categores from "./Pages/Categores";
-import Detelis from "./Pages/Detelis";
+import Detelis from "./Pages/Detelis1";
 import BookNow from "./Pages/BookNow";
+import Detelis1 from "./Pages/Detelis1";
 
 
 
@@ -31,6 +31,7 @@ function App() {
           <Route path="/Categores" element={<Categores/>} />
           <Route path="/Detelis/:id" element={<Detelis/>} />
           <Route path="/BookNow" element={<BookNow/>} />
+          <Route path="/Detelis1" element={<Detelis1/>} />
           
 
         </Routes>

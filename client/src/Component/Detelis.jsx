@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Card from '../Component/Card';
+import Card from './Card';
 
 const Detelis = () => {
   const [product, setProduct] = useState({});

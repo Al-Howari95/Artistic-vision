@@ -1,12 +1,66 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isNavVisible, setNavVisible] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(true);
+  const [userProfileImage, setUserProfileImage] = useState("");
+  const navigate = useNavigate();
 
   const toggleNav = () => {
     setNavVisible(!isNavVisible);
   };
+
+  const handleLogin = () => {
+    // Perform authentication logic
+    // For simplicity, let's assume successful login and set user information
+    setLoggedIn(true);
+    setUserProfileImage("https://cdn-icons-png.flaticon.com/256/3135/3135789.png");
+
+    // Redirect to the login page
+    navigate("/Login");
+  };
+
+  const handleLogout = () => {
+    // Perform logout logic
+    setLoggedIn(false);
+    setUserProfileImage("");
+  };
+
+  const NavLogin = isLoggedIn ? (
+    <div className="flex items-center">
+      <Link to="/Profile"><img
+        // src={userProfileImage}
+        src = "https://cdn-icons-png.flaticon.com/256/3135/3135789.png"
+        alt="User Profile"
+        className="h-8 w-auto rounded-full mr-2"
+      /></Link>
+      {/* <span className="text-md font-bold text-blue-700">
+        User Name 
+      </span> */}
+      <button
+        onClick={handleLogout}
+        className="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0"
+      >
+        Logout
+      </button>
+    </div>
+  ) : (
+    <div className="flex ">
+      <Link
+        to="/Login"
+        className="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0"
+      >
+        Sign in
+      </Link>
+      <Link
+        to="/Registration"
+        className="block text-md px-4 ml-2 py-2 rounded text-blue-700 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0"
+      >
+        Sign Up
+      </Link>
+    </div>
+  );
 
   return (
     <div className="sticky top-0 w-full z-50">
@@ -28,7 +82,6 @@ const Header = () => {
                 className="font-semibold text-xl tracking-tight"
               >
                 CleanWave
-
               </span>
             </div>
           </div>
@@ -59,9 +112,11 @@ const Header = () => {
                 Home
               </Link>
 
-              <Link to ="/Categores" className="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">Services
-
-
+              <Link
+                to="/Categores"
+                className="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2"
+              >
+                Services
               </Link>
 
               <Link
@@ -76,7 +131,12 @@ const Header = () => {
               >
                 Contact
               </Link>
-              <Link to="/BookNow" className="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">Book now</Link>
+              <Link
+                to="/BookNow"
+                className="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2"
+              >
+                Book now
+              </Link>
             </div>
             <div className="relative mx-auto text-gray-600 lg:block hidden">
               <input
@@ -106,10 +166,7 @@ const Header = () => {
                 </svg>
               </button>
             </div>
-            <div className="flex ">
-              <Link to="/Login" className="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">Sign in</Link>
-              <Link to="/Registration" className=" block text-md px-4  ml-2 py-2 rounded text-blue-700 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">Sign Up</Link>
-            </div>
+            <div className="flex ">{NavLogin}</div>
           </div>
         )}
       </nav>

@@ -1,46 +1,53 @@
 import React, { useState } from "react";
 import axios from "axios";
-
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsImVtYWlsIjoiZGFoYW1zaGVobG9hZmZmZnlAZ21haWwuY29tIiwiaWF0IjoxNjk4NjE0OTUzLCJleHAiOjE2OTg2MTg1NTN9.RXoPlhpd4kDkulaWeS9A-ArohoTK0A2FfcnvSrKOysk"; // Replace 'YOUR_JWT_TOKEN' with the actual JWT token
-// After receiving the token from the server response
-const receivedToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsImVtYWlsIjoiZGFoYW1zaGVobG9hZmZmZnlAZ21haWwuY29tIiwiaWF0IjoxNjk4NjE1NzI3LCJleHAiOjE2OTg2MTkzMjd9.EwlBKOKvFPdyo4SgNhD_5WHbkd3yNNrlVNgy5LWjaxA";
-
-// Store the token in local storage
-localStorage.setItem("token", receivedToken);
-
-// To retrieve the token later
-const storedToken = localStorage.getItem("token");
-
-axios
-  .get("http://127.0.0.1:3000/dashboard", {
-    headers: {
-      Authorization: `Bearer ${storedToken}`,
-    },
-  })
-  .then((response) => {
-    console.log(response.data); // Handle the response from the protected route
-  })
-  .catch((error) => {
-    console.error(error); // Handle errors, e.g., unauthorized access
-  });
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [Confirm, setConfirm] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
     try {
+      // Basic validation
+      if (!email || !password || !confirm) {
+        setError("All fields are required");
+        return;
+      }
+
+      if (!email.includes("@")) {
+        setError("Invalid email address");
+        return;
+      }
+
+      if (password !== confirm) {
+        setError("Password and Confirm Password do not match");
+        return;
+      }
+
+      // Password strength validation
+      const passwordRegex =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (!password.match(passwordRegex)) {
+        setError(
+          "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character."
+        );
+        return;
+      }
+
+      // Clear any previous error
+      setError("");
+
       const response = await axios.post("http://localhost:4000/user", {
         email,
         password,
-        Confirm,
+        confirm,
       });
+
       console.log(response);
       // Handle the response here as per your application's needs
-      alert("successfully login " + response.data);
+      alert("Successfully logged in " + response.data);
 
       window.location.href = "/";
 
@@ -103,22 +110,35 @@ const Login = () => {
                 <div className="relative">
                   <input
                     autoComplete="off"
-                    id="password"
-                    name="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
                     type="password"
-                    value={Confirm}
+                    value={confirm}
                     onChange={(e) => setConfirm(e.target.value)}
                     className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600"
-                    placeholder="Password"
+                    placeholder="Confirm Password"
                   />
+                  {error && <p style={{ color: "red" }}>{error}</p>}
                   <label
-                    htmlFor="password"
+                    htmlFor="confirmPassword"
                     className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
                   >
                     Confirm password
                   </label>
+
                   <br></br>
                   <br></br>
+                  <div className="relative">
+                    <p className="text-gray-600 text-sm mb-2">
+                      Don't have an account?{" "}
+                      <Link
+                        to="/Registration"
+                        className="text-blue-600 hover:underline"
+                      >
+                        Click here to sign up.
+                      </Link>
+                    </p> <br></br>
+                  </div>
                 </div>
                 <div id="google" className="w-full flex justify-center">
                   <button className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
@@ -191,7 +211,7 @@ const Login = () => {
                 <div className="relative">
                   <button
                     onClick={handleLogin}
-                    class="bn632-hover bn28"
+                    className="bn632-hover bn28"
                     id="button"
                   >
                     Login
@@ -205,4 +225,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;
