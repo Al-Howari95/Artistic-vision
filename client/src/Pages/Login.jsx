@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,7 +9,9 @@ const Login = () => {
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
     try {
       // Basic validation
       if (!email || !password || !confirm) {
@@ -28,7 +31,7 @@ const Login = () => {
 
       // Password strength validation
       const passwordRegex =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
       if (!password.match(passwordRegex)) {
         setError(
           "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character."
@@ -46,12 +49,22 @@ const Login = () => {
       });
 
       console.log(response);
-      // Handle the response here as per your application's needs
-      alert("Successfully logged in " + response.data);
 
-      window.location.href = "/";
+      // Use SweetAlert2 directly without creating a separate instance
+      const result = await Swal.fire({
+        icon: 'success',
+        title: 'Successfully logged in',
+        text: `Welcome ${response.data}`,
+        showConfirmButton: true,
+        timer: 5000, // Set a timer for 5 seconds (adjust as needed)
+        confirmButtonText: 'OK',
+      });
 
-      // You can also redirect the user to another page after login
+      if (result.isConfirmed) {
+        // Redirect to the home page or perform any other action
+        window.location.href = "/";
+      }
+
     } catch (error) {
       alert("An error occurred while logging in: " + error.message);
     }

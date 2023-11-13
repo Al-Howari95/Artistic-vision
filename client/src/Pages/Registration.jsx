@@ -5,7 +5,7 @@ const Registration = () => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone_number, setphone_number] = useState("");
   const [error, setError] = useState("");
 
   const validateEmail = (email) => {
@@ -17,8 +17,8 @@ const Registration = () => {
     return passwordRegex.test(password);
   };
 
-  const validatePhoneNumber = (phoneNumber) => {
-    return /^07\d{8}$/.test(phoneNumber);
+  const validatephone_number = (phone_number) => {
+    return /^07\d{8}$/.test(phone_number);
   };
 
   const handleRegistration = async (e) => {
@@ -35,7 +35,7 @@ const Registration = () => {
       return;
     }
 
-    if (!validatePhoneNumber(phoneNumber)) {
+    if (!validatephone_number(phone_number)) {
       setError("Please enter a valid phone number");
       return;
     }
@@ -46,7 +46,7 @@ const Registration = () => {
         username: username,
         email: email,
         password: password,
-        phoneNumber: phoneNumber,
+        phone_number: phone_number,
       });
 
       // Handle the response as per your application's needs
@@ -195,8 +195,8 @@ const Registration = () => {
                           <i className="mdi mdi-lock-outline text-gray-400 text-lg" />
                         </div>
                         <input
-                          onChange={(e) => setPhoneNumber(e.target.value)}
-                          value={phoneNumber}
+                          onChange={(e) => setphone_number(e.target.value)}
+                          value={phone_number}
                           type="phone number"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                           placeholder="00962700000000"
