@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
@@ -8,6 +8,22 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    // Check for existing token when the component mounts
+    const existingToken = getCookie("token");
+
+    if (existingToken) {
+      // Token exists, you may choose to redirect to the home page or perform any other action
+      window.location.href = "/";
+    }
+  }, []);
+
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent the default form submission

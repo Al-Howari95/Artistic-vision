@@ -34,6 +34,7 @@ const Card = () => {
                   <h5 id='text' className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{key.title}</h5>
            
                 <p id='text' className="mb-3 font-normal text-gray-700 dark:text-gray-400">{key.description}</p>
+                
               </div>
             </div>
           </div>
