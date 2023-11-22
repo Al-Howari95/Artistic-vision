@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -58,14 +59,15 @@ const Login = () => {
       // Clear any previous error
       setError("");
 
-      const response = await axios.post("http://localhost:4000/user", {
+      const response = await axios.post("http://localhost:4000/users", {
         email,
         password,
         confirm,
       });
 
-      console.log(response);
-
+      console.log(response.data.id);
+      Cookies.set("id",response.data.id)
+      
       // Use SweetAlert2 directly without creating a separate instance
       const result = await Swal.fire({
         icon: 'success',

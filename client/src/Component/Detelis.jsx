@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Card from './Card';
 
 const Detelis = () => {
@@ -48,7 +48,7 @@ const Detelis = () => {
             {product.title}
             </h2>
             <div className="flex items-center mb-6">
-              <ul className="flex mr-2">
+              {/* <ul className="flex mr-2">
                 <li>
                   <a href="#">
                     <svg
@@ -105,15 +105,15 @@ const Detelis = () => {
                     </svg>
                   </a>
                 </li>
-              </ul>
-              <p className="text-xs dark:text-gray-400 ">
+              </ul> */}
+              {/* <p className="text-xs dark:text-gray-400 ">
                 (2 customer reviews)
-              </p>
+              </p> */}
             </div>
             <p className="max-w-md mb-8 text-gray-700 dark:text-gray-400">
            {product.content}
             </p>
-            <p className="inline-block mb-8 text-4xl font-bold text-gray-700 dark:text-gray-400 ">
+            <p id='priceee' className="inline-block mb-8 text-4xl font-bold text-gray-700 dark:text-gray-400">
               <span>{product.price}</span>
             
             </p>
@@ -123,15 +123,15 @@ const Detelis = () => {
       
           <div className="flex flex-wrap items-center -mx-4 ">
             <div className="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
-              <button className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
-                Add to Cart
+             <Link to="/BookNow">
+              
+             < button className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+                Book Now
               </button>
+              
+              </Link> 
             </div>
-            <div className="w-full px-4 mb-4 lg:mb-0 lg:w-1/2">
-              <button className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
-                Add to wishlist
-              </button>
-            </div>
+          
           </div>
         </div>
       </div>

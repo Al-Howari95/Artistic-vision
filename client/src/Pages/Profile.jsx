@@ -4,12 +4,11 @@ import PPP from "../Component/PPP";
 
 
 
-
 const Profile = () => {
   return (
     <>
    <PP/>
-   <PPP/>
+   {/* <PPP/> */}
 
    
 

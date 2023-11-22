@@ -41,7 +41,7 @@ const ContactUs = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
           <div className="text-black relative px-4 bg-white	 shadow-lg sm:rounded-3xl sm:p-20">
             <div className="text-center pb-6">
-              <h1 className="text-3xl">Contact Us!</h1>
+              <h1 className="text-3xl">Contact <span className="text-blue-700">Us</span>!</h1>
               <p className="text-black text-center">
                 Fill up the form below to send us a message.
               </p>

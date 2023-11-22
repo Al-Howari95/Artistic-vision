@@ -6,9 +6,9 @@ const Comment = () => {
   const [newComment, setNewComment] = useState("");
   const [editComment, setEditComment] = useState("");
   const [selectedComment, setSelectedComment] = useState(null);
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    // استرجاع البيانات عند تحميل المكون
     axios
       .get("http://localhost:4000/message")
       .then((response) => {
@@ -22,17 +22,18 @@ const Comment = () => {
   const handleAddComment = () => {
     if (newComment.trim() !== "") {
       const newCommentObj = {
-        author: "Your Name", // يمكنك تغيير 'Your Name' إلى اسم المستخدم الفعلي
+        author: "Your Name",
         date: new Date().toLocaleDateString(),
         content: newComment,
+        rating: rating,
       };
 
-      // إضافة التعليق إلى الخادم
       axios
-        .post("http://localhost:4000/message", newCommentObj)
+        .post("http://localhost:4000/message$", newCommentObj)
         .then((response) => {
           setComments([...comments, response.data]);
           setNewComment("");
+          setRating(0);
         })
         .catch((error) => {
           console.error("Error adding comment:", error);
@@ -40,26 +41,24 @@ const Comment = () => {
     }
   };
 
-  const handleEditComment = () => {
-    if (selectedComment && editComment.trim() !== "") {
+  const handleEditComment = (comment) => {
+    if (editComment.trim() !== "") {
       const updatedComment = {
-        ...selectedComment,
+        ...comment,
         content: editComment,
+        rating: rating,
       };
 
-      // تحديث التعليق في الخادم
       axios
-        .put(
-          `http://localhost:4000/message/${selectedComment.id}`,
-          updatedComment
-        )
+        .put(`http://localhost:4000/message/${comment.id}`, updatedComment)
         .then(() => {
-          const updatedComments = comments.map((comment) =>
-            comment.id === selectedComment.id ? updatedComment : comment
+          const updatedComments = comments.map((c) =>
+            c.id === comment.id ? updatedComment : c
           );
           setComments(updatedComments);
           setSelectedComment(null);
           setEditComment("");
+          setRating(0);
         })
         .catch((error) => {
           console.error("Error updating comment:", error);
@@ -68,7 +67,6 @@ const Comment = () => {
   };
 
   const handleDeleteComment = (comment) => {
-    // حذف التعليق من الخادم
     axios
       .delete(`http://localhost:4000/message/${comment.id}`)
       .then(() => {
@@ -79,6 +77,31 @@ const Comment = () => {
       .catch((error) => {
         console.error("Error deleting comment:", error);
       });
+  };
+
+  const handleDropdownToggle = (comment) => {
+    setSelectedComment(selectedComment === comment ? null : comment);
+  };
+
+  const renderDropdownMenu = (comment) => {
+    return (
+      <div className="absolute top-2 right-2 flex flex-col space-y-2">
+        <button
+          type="button"
+          onClick={() => handleEditComment(comment)}
+          className="bn632-hover bn28"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          onClick={() => handleDeleteComment(comment)}
+          className="bn632-hover bn28"
+        >
+          Delete
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -106,10 +129,26 @@ const Comment = () => {
               />
             </div>
 
+            <div className="flex items-center space-x-2 mt-2">
+              <span>Rate:</span>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  type="button"
+                  onClick={() => setRating(star)}
+                  className={`text-yellow-500 hover:text-yellow-600 focus:outline-none ${
+                    star <= rating ? "fill-star" : ""
+                  }`}
+                >
+                  ★
+                </button>
+              ))}
+            </div>
+
             <button
               type="button"
               onClick={handleAddComment}
-              class="bn632-hover bn28"
+              className="bn632-hover bn28"
               id="button"
             >
               Post comment
@@ -119,15 +158,15 @@ const Comment = () => {
           {comments.map((comment) => (
             <article
               key={comment.id}
-              className="p-6 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+              className="p-6 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900 relative"
             >
               <div className="relative">
                 <button
-                  onClick={() => setSelectedComment(comment)}
+                  onClick={() => handleDropdownToggle(comment)}
                   className="absolute top-1 right-1 text-gray-500 focus:outline-none"
                 >
                   <svg
-                    className="w-4 h-4"
+                    className="w-4 h-4 cursor-pointer"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -136,6 +175,7 @@ const Comment = () => {
                     <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM8 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
                   </svg>
                 </button>
+                {selectedComment === comment && renderDropdownMenu(comment)}
               </div>
               <p className="text-gray-500 dark:text-gray-400">
                 {selectedComment === comment ? (
@@ -145,17 +185,25 @@ const Comment = () => {
                       value={editComment}
                       onChange={(e) => setEditComment(e.target.value)}
                     />
-                    {/* <button
-                      type="button"
-                      onClick={handleEditComment}
-                      className="text-xs text-primary-700 hover:text-primary-800 cursor-pointer"
-                    >
-                      Save
-                    </button> */}
+                    <div className="flex items-center space-x-2 mt-2">
+                      <span>Rate:</span>
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() => setRating(star)}
+                          className={`text-yellow-500 hover:text-yellow-600 focus:outline-none ${
+                            star <= rating ? "fill-star" : ""
+                          }`}
+                        >
+                          ★
+                        </button>
+                      ))}
+                    </div>
                     <button
                       type="button"
-                      onClick={handleEditComment}
-                      class="bn632-hover bn28"
+                      onClick={() => handleEditComment(comment)}
+                      className="bn632-hover bn28"
                       id="button"
                     >
                       Save
@@ -167,19 +215,23 @@ const Comment = () => {
                       Author: {comment.author}
                     </div>
                     <div className="text-gray-700">Date: {comment.date}</div>
+                    <div className="flex items-center space-x-2 mt-2">
+                      <span>Rating:</span>
+                      {[...Array(comment.rating)].map((_, index) => (
+                        <span
+                          key={index}
+                          className="text-yellow-500 fill-star"
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
                     {comment.content}
                   </div>
                 )}
               </p>
               <div className="flex items-center mt-4 space-x-4">
-                <button
-                  type="button"
-                  onClick={() => handleDeleteComment(comment)}
-                  class="bn632-hover bn28"
-                  id="button"
-                >
-                  Delete
-                </button>
+                {/* ... (your existing delete button) */}
               </div>
             </article>
           ))}

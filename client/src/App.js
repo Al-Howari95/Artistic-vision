@@ -13,6 +13,8 @@ import Detelis from "./Pages/Detelis1";
 import BookNow from "./Pages/BookNow";
 import Detelis1 from "./Pages/Detelis1";
 import Profile from "./Pages/Profile";
+import Admin from "./Admim/Admin";
+
 
 
 
@@ -34,6 +36,7 @@ function App() {
           <Route path="/BookNow" element={<BookNow/>} />
           <Route path="/Detelis1" element={<Detelis1/>} />
           <Route path="/Profile" element={<Profile/>} />
+          <Route path="/Admin" element={<Admin/>} />
           
 
         </Routes>

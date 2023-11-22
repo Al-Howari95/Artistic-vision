@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from 'sweetalert2';
 import axios from "axios";
 
 const Registration = () => {
@@ -42,7 +43,7 @@ const Registration = () => {
 
     try {
       // Send the data to the server using Axios or another method
-      const response = await axios.post("http://localhost:4000/user", {
+      const response = await axios.post("http://localhost:4000/users", {
         username: username,
         email: email,
         password: password,
@@ -50,8 +51,20 @@ const Registration = () => {
       });
 
       // Handle the response as per your application's needs
-      alert("Successfully registered", response.data);
+    // Use SweetAlert2 directly without creating a separate instance
+    const result = await Swal.fire({
+      icon: 'success',
+      title: 'Successfully logged in',
+      text: `Welcome ${response.data}`,
+      showConfirmButton: true,
+      timer: 5000, // Set a timer for 5 seconds (adjust as needed)
+      confirmButtonText: 'OK',
+    });
+
+    if (result.isConfirmed) {
+      // Redirect to the home page or perform any other action
       window.location.href = "/Login";
+    }
     } catch (error) {
       setError("An error occurred during registration: " + error.message);
     }
