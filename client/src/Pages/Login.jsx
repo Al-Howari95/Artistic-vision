@@ -9,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
+  
 
   useEffect(() => {
     // Check for existing token when the component mounts
@@ -59,14 +60,13 @@ const Login = () => {
       // Clear any previous error
       setError("");
 
-      const response = await axios.post("http://localhost:4000/users", {
-        email,
-        password,
-        confirm,
-      });
-
-      console.log(response.data.id);
-      Cookies.set("id",response.data.id)
+      const response = await axios.get(`http://localhost:4000/users?email=${email}&password=${password}`);
+      if(response.status == 200){
+        if(response.data[0].id== undefined){
+          throw new Error("Cheack");
+        }
+      console.log("I am here ",response.data[0].id);
+      Cookies.set("id",response.data[0].id)
       
       // Use SweetAlert2 directly without creating a separate instance
       const result = await Swal.fire({
@@ -82,6 +82,9 @@ const Login = () => {
         // Redirect to the home page or perform any other action
         window.location.href = "/";
       }
+    }else{
+      throw new Error("osama");
+    }
 
     } catch (error) {
       alert("An error occurred while logging in: " + error.message);
