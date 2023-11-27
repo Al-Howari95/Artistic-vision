@@ -7,14 +7,17 @@ import Button from "../Component/Button";
 
 const Categores = () => {
   return (
-    <>
     
+   <div className="">
    <Cate1/>
-   <Cate2/>
+   <Cate2/> 
    <Cate3/>
    <Button/>
+   </div>
+    
 
-    </>
+
+ 
   );
 };
 

@@ -29,7 +29,7 @@ const Card2 = () => {
 
   return (
     <div>
-      <h1 data-aos="fade-up"> Meet Our Team</h1>
+      <h1 data-aos="fade-up"> Clean Wave Team</h1>
       <br />
       <br />
       <br />
@@ -40,15 +40,15 @@ const Card2 = () => {
               id="lalala"
               className="grid-rows-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
-              <a href="#">
+              
                 <img  className="rounded-t-lg" src={key.image} alt=""/>
-              </a>
+            
               <div className="p-5">
-                <a href="#">
+                
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {key.name}
                   </h5>
-                </a>
+                
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   {key.position}
                 </p>

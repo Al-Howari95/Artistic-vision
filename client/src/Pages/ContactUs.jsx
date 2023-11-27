@@ -12,7 +12,7 @@ const ContactUs = () => {
     e.preventDefault();
     try {
       // Send the data to the server using Axios or another method
-      const response = await axios.post("http://localhost:4000/MyData", {
+      const response = await axios.post("http://localhost:4000/Contact", {
         name: name,
         email: email,
         subject: subject,
@@ -33,15 +33,15 @@ const ContactUs = () => {
 
   return (
     <div>
-      <div
-        id="contact"
+      <div  
+        id="contact"  
         className="min-h-screen bg-gray-800 py-6 flex flex-col justify-center sm:py-12"
       >
         <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-          <div className="text-black relative px-4 bg-white	 shadow-lg sm:rounded-3xl sm:p-20">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-300 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+          <div id="CCo" className="text-black relative px-4 bg-white	 shadow-lg sm:rounded-3xl sm:p-20">
             <div className="text-center pb-6">
-              <h1 className="text-3xl">Contact <span className="text-blue-700">Us</span>!</h1>
+              <h1 className="text-3xl">Contact <span className="text-blue-500">Us</span>!</h1>
               <p className="text-black text-center">
                 Fill up the form below to send us a message.
               </p>
