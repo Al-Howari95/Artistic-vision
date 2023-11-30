@@ -392,6 +392,12 @@
       "password": "Mohammad@1",
       "phone_number": "0700000000",
       "id": 60
+    },
+    {
+      "username": "New User",
+      "email": "newuser@example.com",
+      "phone": "123-456-7890",
+      "id": 61
     }
   ],
   "Contact": [
