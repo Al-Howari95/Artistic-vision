@@ -21,10 +21,9 @@ const Login = () => {
     }
   }, []);
 
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
+  const getCookie = (name, value) => {
+    const cookieValue = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; expires=' + '; path=/';
+    document.cookie = cookieValue;
   };
 
   const handleLogin = async (e) => {
@@ -257,6 +256,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+    
+    
   );
 };
 

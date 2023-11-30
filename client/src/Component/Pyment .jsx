@@ -23,7 +23,7 @@ const Pyment  = () => {
       style={{ maxWidth: 600 }}
     >
       <div className="w-full pt-1 pb-5">
-        <div className="bg-indigo-500 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
+        <div className="bg-blue-400 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
           <i className="mdi mdi-credit-card-outline text-3xl" />
         </div>
       </div>

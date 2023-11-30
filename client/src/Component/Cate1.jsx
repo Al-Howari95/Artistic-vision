@@ -6,7 +6,7 @@ const Categories = () => {
   const [cardsData, setCardsData] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [userFavorites, setUserFavorites] = useState([]);
-
+console.log(wishlist,"ddddddddddddd")
   useEffect(() => {
     axios.get('http://localhost:4000/Sarvices')
       .then(response => {
@@ -38,7 +38,7 @@ const Categories = () => {
       }
     }
   };
-
+  
   return (
     <div className="flex flex-col items-center">
       <div>
@@ -98,7 +98,7 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Your Favorites</h2>
         <div className="flex flex-wrap justify-center gap-20">
           {userFavorites.map((favorite, index) => (
@@ -118,7 +118,7 @@ const Categories = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

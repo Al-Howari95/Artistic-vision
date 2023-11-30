@@ -1,108 +1,108 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+  import React, { useState, useEffect } from "react";
+  import axios from "axios";
 
-const Comment = () => {
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
-  const [editComment, setEditComment] = useState("");
-  const [selectedComment, setSelectedComment] = useState(null);
-  const [rating, setRating] = useState(0);
+  const Comment = () => {
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState("");
+    const [editComment, setEditComment] = useState("");
+    const [selectedComment, setSelectedComment] = useState(null);
+    const [rating, setRating] = useState(0);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/message")
-      .then((response) => {
-        setComments(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching comments:", error);
-      });
-  }, []);
-
-  const handleAddComment = () => {
-    if (newComment.trim() !== "") {
-      const newCommentObj = {
-        author: "Your Name",
-        date: new Date().toLocaleDateString(),
-        content: newComment,
-        rating: rating,
-      };
-
+    useEffect(() => {
       axios
-        .post("http://localhost:4000/message", newCommentObj)
+        .get("http://localhost:4000/message")
         .then((response) => {
-          setComments([...comments, response.data]);
-          setNewComment("");
-          setRating(0);
+          setComments(response.data);
         })
         .catch((error) => {
-          console.error("Error adding comment:", error);
+          console.error("Error fetching comments:", error);
         });
-    }
-  };
+    }, []);
 
-  const handleEditComment = (comment) => {
-    if (editComment.trim() !== "") {
-      const updatedComment = {
-        ...comment,
-        content: editComment,
-        rating: rating,
-      };
+    const handleAddComment = () => {
+      if (newComment.trim() !== "") {
+        const newCommentObj = {
+          author: "Your Name",
+          date: new Date().toLocaleDateString(),
+          content: newComment,
+          rating: rating,
+        };
 
+        axios
+          .post("http://localhost:4000/message", newCommentObj)
+          .then((response) => {
+            setComments([...comments, response.data]);
+            setNewComment("");
+            setRating(0);
+          })
+          .catch((error) => {
+            console.error("Error adding comment:", error);
+          });
+      }
+    };
+
+    const handleEditComment = (comment) => {
+      if (editComment.trim() !== "") {
+        const updatedComment = {
+          ...comment,
+          content: editComment,
+          rating: rating,
+        };
+
+        axios
+          .put(`http://localhost:4000/message/${comment.id}`, updatedComment)
+          .then(() => {
+            const updatedComments = comments.map((c) =>
+              c.id === comment.id ? updatedComment : c
+            );
+            setComments(updatedComments);
+            setSelectedComment(null);
+            setEditComment("");
+            setRating(0);
+          })
+          .catch((error) => {
+            console.error("Error updating comment:", error);
+          });
+      }
+    };
+
+    const handleDeleteComment = (comment) => {
       axios
-        .put(`http://localhost:4000/message/${comment.id}`, updatedComment)
+        .delete(`http://localhost:4000/message/${comment.id}`)
         .then(() => {
-          const updatedComments = comments.map((c) =>
-            c.id === comment.id ? updatedComment : c
-          );
+          const updatedComments = comments.filter((c) => c.id !== comment.id);
           setComments(updatedComments);
           setSelectedComment(null);
-          setEditComment("");
-          setRating(0);
         })
         .catch((error) => {
-          console.error("Error updating comment:", error);
+          console.error("Error deleting comment:", error);
         });
-    }
-  };
+    };
 
-  const handleDeleteComment = (comment) => {
-    axios
-      .delete(`http://localhost:4000/message/${comment.id}`)
-      .then(() => {
-        const updatedComments = comments.filter((c) => c.id !== comment.id);
-        setComments(updatedComments);
-        setSelectedComment(null);
-      })
-      .catch((error) => {
-        console.error("Error deleting comment:", error);
-      });
-  };
+    const handleDropdownToggle = (comment) => {
+      setSelectedComment(selectedComment === comment ? null : comment);
+    };
 
-  const handleDropdownToggle = (comment) => {
-    setSelectedComment(selectedComment === comment ? null : comment);
-  };
-
-  const renderDropdownMenu = (comment) => {
-    return (
-      <div className="absolute top-2 right-2 flex flex-col space-y-2">
-        <button
-          type="button"
-          onClick={() => handleEditComment(comment)}
-          className="bn632-hover bn28"
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          onClick={() => handleDeleteComment(comment)}
-          className="bn632-hover bn28"
-        >
-          Delete
-        </button>
-      </div>
-    );
-  };
+    const renderDropdownMenu = (comment) => {
+      return (
+        <div className="absolute top-2 right-2 flex flex-col space-y-2">
+          <button
+            type="button"
+            onClick={() => handleEditComment(comment)}
+            className="bn632-hover bn28"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            onClick={() => handleDeleteComment(comment)}
+            className="bn632-hover bn28"
+          >
+            Delete
+          </button>
+        </div>
+      );
+    };
 
   return (
     <div>

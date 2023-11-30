@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Search from "./Search";
+import Cookies from 'js-cookie'
 
 const Header = () => {
-  const [isNavVisible, setNavVisible] = useState(true);
-  const [isLoggedIn, setLoggedIn] = useState(true);
+
+  const [isNavVisible, setNavVisible] = useState(true);  
+  const [isLoggedIn, setLoggedIn] = useState(true);  
   const [userProfileImage, setUserProfileImage] = useState("");
   const navigate = useNavigate();
+
+
+useEffect(()=>{
+
+  const token = Cookies.get('Token');
+  if(token){
+
+    setLoggedIn(true)
+  }
+
+})
+
 
   const toggleNav = () => {
     setNavVisible(!isNavVisible);
@@ -26,6 +40,9 @@ const Header = () => {
     // Perform logout logic
     setLoggedIn(false);
     setUserProfileImage("");
+    Cookies.remove('Token');
+    Cookies.remove('user_id');
+
   };
 
   const NavLogin = isLoggedIn ? (

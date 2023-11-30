@@ -19,14 +19,14 @@ import Admin from "./Admim/Admin";
 
 
 function App() {
+
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header/>
 
         <Routes> 
         <Route path="/" element={<Home/>} />
-
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Registration" element={<Registration/>} />

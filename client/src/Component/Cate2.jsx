@@ -94,7 +94,7 @@ const Categories = () => {
           </div>
         </div>
       ))}
-            <div className="mt-8">
+            {/* <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Your Favorites</h2>
         <div className="flex flex-wrap justify-center gap-20">
           {userFavorites.map((favorite, index) => (
@@ -114,7 +114,7 @@ const Categories = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

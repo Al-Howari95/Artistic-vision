@@ -8,6 +8,7 @@ import Card2 from "../Admim/Card2";
 import Categores from "../Admim/Categores";
 import Card1 from "./Card1";
 import Contact from "./Contact";
+import Submit from "./Submit";
 
 const Admin = () => {
   const [User, setUser] = useState([]);
@@ -132,6 +133,12 @@ const Admin = () => {
                 >
                   <span className="mx-2 text-sm font-medium">Contact</span>
                 </button>
+                <button
+                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  onClick={() => setPage("Submit")}
+                >
+                  <span className="mx-2 text-sm font-medium">Submit</span>
+                </button>
               </div>
 
               <div className="space-y-3 ">
@@ -183,6 +190,9 @@ const Admin = () => {
         </div>
         <div className={`${page === "Contact" ? "block" : "hidden"} w-full`}>
           <Contact />
+        </div>
+        <div className={`${page === "Submit" ? "block" : "hidden"} w-full`}>
+          <Submit />
         </div>
       </div>
     </div>
