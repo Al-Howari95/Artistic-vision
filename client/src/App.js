@@ -14,6 +14,8 @@ import BookNow from "./Pages/BookNow";
 import Detelis1 from "./Pages/Detelis1";
 import Profile from "./Pages/Profile";
 import Admin from "./Admim/Admin";
+import Adminlogin from "./Admim/Adminlogin";
+
 
 
 
@@ -36,6 +38,10 @@ function App() {
           <Route path="/BookNow" element={<BookNow/>} />
           <Route path="/Detelis1" element={<Detelis1/>} />
           <Route path="/Profile" element={<Profile/>} />
+          <Route path="/Adminlogin" element={<Adminlogin/>} />
+          <Route path="/Admin" element={<Admin/>} />
+         
+
        
           
 

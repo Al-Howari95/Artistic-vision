@@ -177,8 +177,8 @@ const BookNow = () => {
         // يمكنك إضافة مزيد من الكود هنا بناءً على استجابة الخادم إذا لزم الأمر
         Swal.fire({
           icon: 'success',
-          title: 'Successfully logged in',
-          text: `Welcome ${response.data}`,
+          title: 'Successfully ',
+          text: `Thank You`,
           showConfirmButton: true,
           timer: 5000, // Set a timer for 5 seconds (adjust as needed)
           confirmButtonText: 'OK',

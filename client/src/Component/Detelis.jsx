@@ -69,7 +69,7 @@ const Detelis = () => {
                     id="priceee"
                     className="inline-block mb-8 text-4xl font-bold text-gray-700 dark:text-gray-400"
                   >
-                    <span>{product.price}</span>
+                    <span id="LO">{product.price}</span>
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center -mx-4 ">

@@ -16,6 +16,7 @@ const Admin = () => {
   const [photoPreview, setPhotoPreview] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const history = useNavigate();
+  
 
   console.log(page); // fetch products
   useEffect(() => {
@@ -37,22 +38,29 @@ const Admin = () => {
 
   // to open and close sidebar
   const [isSideOpen, setIsSideOpen] = useState(true);
+  const toggleSidebar = () => {
+    setIsSideOpen(!isSideOpen);
+  };
+  
 
   return (
     <div className="flex h-full z-50">
       {/* sidebar */}
       <div
-  className={`fixed w-64 h-full bg-white border-r overflow-y-auto ${
-    isSideOpen ? "left-0" : "-left-64"
-  }`}
-//   style={{ zIndex: 1000 }} // Set a higher z-index value
->
+        className={`fixed w-64 h-full bg-white border-r overflow-y-auto ${
+          isSideOpen ? "left-0" : "-left-64"
+        }`}
+        //   style={{ zIndex: 1000 }} // Set a higher z-index value
+      >
+
+        
         <button
           aria-label="toggle sidebar"
           className={`${
             isSideOpen ? "hidden" : "flex"
           } lg:hidden h-10 w-10 bg-gray-600 absolute right-0 mt-16 -mr-10 items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800`}
           onClick={() => setIsSideOpen(!isSideOpen)}
+          // onClick={toggleSidebar}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -88,6 +96,16 @@ const Admin = () => {
           ></svg>
         </button>
         <aside className="flex flex-col w-64 h-auto px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+          <div>
+            <h1 className="text-blue-400">CleanWave</h1>
+            <img
+              id="imagess"
+              src="https://s3.envato.com/files/262194812/thumbnail.png"
+              className="mr-5 h-6 sm:h-9"
+              alt="logo"
+            />
+          </div>
+
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav className="-mx-3 space-y-6 ">
               <div className="space-y-3 ">
@@ -95,46 +113,46 @@ const Admin = () => {
                   Manage Account
                 </label>
                 <button
-                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   onClick={() => setPage("Dashboard")}
                 >
                   <span className="mx-2 text-sm font-medium">Dashboard</span>
                 </button>
 
                 <button
-                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   onClick={() => setPage("Users")}
                 >
                   <span className="mx-2 text-sm font-medium">Users</span>
                 </button>
 
-                <button
-                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                {/* <button
+                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   onClick={() => setPage("Categores")}
                 >
                   <span className="mx-2 text-sm font-medium">Categores</span>
-                </button>
+                </button> */}
                 <button
-                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   onClick={() => setPage("Card1")}
                 >
-                  <span className="mx-2 text-sm font-medium">Card1</span>
+                  <span className="mx-2 text-sm font-medium">Services</span>
                 </button>
 
                 <button
-                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   onClick={() => setPage("Card2")}
                 >
-                  <span className="mx-2 text-sm font-medium">Card2</span>
+                  <span className="mx-2 text-sm font-medium">Employees</span>
                 </button>
                 <button
-                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   onClick={() => setPage("Contact")}
                 >
                   <span className="mx-2 text-sm font-medium">Contact</span>
                 </button>
                 <button
-                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  className="w-full flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   onClick={() => setPage("Submit")}
                 >
                   <span className="mx-2 text-sm font-medium">Submit</span>
@@ -143,7 +161,7 @@ const Admin = () => {
 
               <div className="space-y-3 ">
                 <button
-                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                  className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-blue-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                   onClick={logout}
                 >
                   <svg
@@ -181,9 +199,9 @@ const Admin = () => {
           <Card2 />
         </div>
 
-        <div className={`${page === "Categores" ? "block" : "hidden"} w-full`}>
+        {/* <div className={`${page === "Categores" ? "block" : "hidden"} w-full`}>
           <Categores />
-        </div>
+        </div> */}
 
         <div className={`${page === "Card1" ? "block" : "hidden"} w-full`}>
           <Card1 />
@@ -200,3 +218,6 @@ const Admin = () => {
 };
 
 export default Admin;
+
+
+

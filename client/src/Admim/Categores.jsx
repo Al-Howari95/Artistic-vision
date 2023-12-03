@@ -14,9 +14,6 @@ const Categores = () => {
    <Cate3/>
    <Button/>
    </div>
-    
-
-
  
   );
 };

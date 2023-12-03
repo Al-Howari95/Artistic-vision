@@ -9,7 +9,7 @@ const Profile = () => {
     id: "", // Replace with the actual user ID
     username: "",
     email: "",
-    phone_number: "",
+    phone: "",
     password: "",
     avatar: "",
     wishlist: [], // Add wishlist property to the initial state
@@ -195,7 +195,7 @@ const Profile = () => {
                 <input
                   type="tel"
                   id="phoneInput"
-                  value={userData.phone_number}
+                  value={userData.phone}
                   onChange={(e) =>
                     setUserData({
                       ...userData,

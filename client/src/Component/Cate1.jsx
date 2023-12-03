@@ -5,7 +5,13 @@ import { Link } from 'react-router-dom';
 const Categories = () => {
   const [cardsData, setCardsData] = useState([]);
   const [wishlist, setWishlist] = useState([]);
-  const [userFavorites, setUserFavorites] = useState([]);
+  const [userFavorites, setUserFavorites] = useState({
+    image: "",
+    title: "",
+    content: "",  
+    price: "",
+    description: "",
+  });
 console.log(wishlist,"ddddddddddddd")
   useEffect(() => {
     axios.get('http://localhost:4000/Sarvices')

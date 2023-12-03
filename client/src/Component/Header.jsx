@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 
 const Header = () => {
 
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isNavVisible, setNavVisible] = useState(true);  
   const [isLoggedIn, setLoggedIn] = useState(true);  
   const [userProfileImage, setUserProfileImage] = useState("");
@@ -26,10 +27,19 @@ useEffect(()=>{
     setNavVisible(!isNavVisible);
   };
 
+  const handleMouseEnter = () => {
+    setDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownOpen(false);
+  };
+
+
   const handleLogin = () => {
     // Perform authentication logic
     // For simplicity, let's assume successful login and set user information
-    setLoggedIn(true);
+    setLoggedIn(false);
     setUserProfileImage("https://cdn-icons-png.flaticon.com/256/3135/3135789.png");
 
     // Redirect to the login page
@@ -65,22 +75,40 @@ useEffect(()=>{
     </div>
   ) : (
     <div className="flex ">
-      <Link
-        to="/Login"
-        className="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0"
-      >
-        Sign in
-      </Link>
-      <Link
-        to="/Registration"
-        className="block text-md px-4 ml-2 py-2 rounded text-blue-700 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0"
-      >
-        Sign Up
-      </Link>
-      {/* <Link to="./Admin"><button>hg</button></Link> */}
+    <div
+      className="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0 relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      Sign in
+      {isDropdownOpen && (
+        <div className="absolute bg-white border rounded mt-2">
+          <Link
+            to="/Login"
+            className=" block px-4 py-2 text-blue-700 hover:bg-blue-700 hover:text-white"
+          >
+           User
+          </Link>
+          <Link
+            to="/Adminlogin"
+            className="block px-4 py-2 text-blue-700 hover:bg-blue-700 hover:text-white"
+          >
+            Admin
+          </Link>
+        </div>
+      )}
     </div>
-    
-  );
+    <Link
+      to="/Registration"
+      className="block text-md px-4 ml-2 py-2 rounded text-blue-700 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0"
+    >
+      Sign Up
+    </Link>
+  </div>
+);
+
+// ... (الكود الحالي)
+
 
   return (
     <div className="sticky top-0 w-full z-50">

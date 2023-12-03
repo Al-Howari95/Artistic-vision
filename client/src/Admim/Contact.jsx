@@ -19,7 +19,7 @@ const Users = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.put(`http://localhost:4000/Contact/${userId}`);
+      await axios.delete(`http://localhost:4000/Contact/${userId}`);
       fetchData(); // Refresh the data after deletion
     } catch (error) {
       console.error('Error deleting user:', error);

@@ -15,6 +15,7 @@ console.log(userFavorites,"ddddddssssss")
       .then(response => {
         // Assuming the response data is an array of favorites
         setUserFavorites(response.data);
+        console.log("isaaaaaaaaaaaaaaaaaaaa",response.data)
       })
       .catch(error => {
         console.error('Error fetching data:', error);

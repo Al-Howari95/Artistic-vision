@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 const ContactUs = () => {
 
@@ -21,7 +22,15 @@ const ContactUs = () => {
       console.log(email);
 
       // Handle the response as per your application's needs
-      alert("successfully", response.data);
+      // alert("successfully", response.data);
+      const result = await Swal.fire({
+        icon: 'success',
+        title: 'Successfully ',
+        text: ` Thank You `,
+        showConfirmButton: true,
+        timer: 5000, // Set a timer for 5 seconds (adjust as needed)
+        confirmButtonText: 'OK',
+      });
       window.location.href = "/";
 
       // You can also redirect the user to another page after registration
@@ -38,7 +47,7 @@ const ContactUs = () => {
         className="min-h-screen bg-gray-800 py-6 flex flex-col justify-center sm:py-12"
       >
         <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-300 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+          <div id="Cover" className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-300 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
           <div id="CCo" className="text-black relative px-4 bg-white	 shadow-lg sm:rounded-3xl sm:p-20">
             <div className="text-center pb-6">
               <h1 className="text-3xl">Contact <span className="text-blue-500">Us</span>!</h1>

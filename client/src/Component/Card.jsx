@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -21,32 +20,33 @@ const Card = () => {
 
   return (
     <div>
-   <div><h1 className='keep'>
-    Keep Your Home Clean Now..
-   </h1></div><br></br>wonderful site. At the top is an advertisement for your online cleaning business..
-    
-      <div id='card'>
+      <div>
+        <h1 className='keep'>
+          Keep Your Home Clean Now..
+        </h1>
+      </div>
+      <br></br>
+      wonderful site. At the top is an advertisement for your online cleaning business..
+
+      <div id='card' className="flex flex-wrap">
         {data && data.map(key => (
-          <div key={key.id} data-aos="fade-up" className="flex space-x-4">
+          <div key={key.id} data-aos="fade-up" className="flex flex-col w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 p-2">
             <div id='l' className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img id='image' className="rounded-t-lg" src={key.image} alt="" />
+              <img id='image' className="rounded-t-lg" src={key.image} alt="" />
               <div className="p-5">
-                  <h5 id='text' className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{key.title}</h5>
-           
+                <h5 id='text' className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{key.title}</h5>
                 <p id='text' className="mb-3 font-normal text-gray-700 dark:text-gray-400">{key.description}</p>
-                
               </div>
             </div>
           </div>
         ))}
       </div>
       <br></br><br></br>
-      <Link to ="/Categores">
-       <button class="bn632-hover bn28" id="button">VIEW MORE</button>
-       </Link> 
+      <Link to="/Categores">
+        <button className="bn632-hover bn28" id="button">VIEW MORE</button>
+      </Link>
     </div>
   );
 };
 
 export default Card;
-

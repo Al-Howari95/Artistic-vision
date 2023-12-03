@@ -1,6 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const Pyment  = () => {
+const Payment = () => {
+  const apiUrl = 'http://localhost:3001';
+
+  // حالة محلية لتخزين بيانات الدفع
+  const [paymentData, setPaymentData] = useState({
+    name: '',
+    cardNumber: '',
+    expirationMonth: '',
+    expirationYear: '',
+    securityCode: '',
+  });
+
+  // تحديث حالة محلية عند تغيير أحد حقول الإدخال
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPaymentData({
+      ...paymentData,
+      [name]: value,
+    });
+  };
+
+  // إرسال بيانات الدفع إلى JSON-Server
+  const makePayment = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/payments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(paymentData),
+      });
+
+      if (response.ok) {
+        alert('Payment successful!');
+      } else {
+        alert('Payment failed.');
+      }
+    } catch (error) {
+      alert('Error making payment:', error);
+    }
+  };
+
   return (
     <div>
         <>
@@ -70,6 +111,9 @@ const Pyment  = () => {
             className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
             placeholder="John Smith"
             type="text"
+            name="name"
+            value={paymentData.name}
+            onChange={handleInputChange}
           />
         </div>
       </div>
@@ -129,7 +173,10 @@ const Pyment  = () => {
         </div>
       </div>
       <div>
-      <button class="bn632-hover bn28">PAY NOW
+      <button
+          type="button"
+          onClick={makePayment}
+       class="bn632-hover bn28">PAY NOW
 
           <i className="mdi mdi-lock-outline mr-1" /> 
         </button>
@@ -147,4 +194,8 @@ const Pyment  = () => {
   )
 }
 
-export default Pyment 
+export default Payment 
+
+
+
+

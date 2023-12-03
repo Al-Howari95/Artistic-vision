@@ -11,6 +11,7 @@ const Submit = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get('http://localhost:4000/submit');
+      console.log("hhhhhhhhhhshshshhsh",response.data)
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
