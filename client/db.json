@@ -1070,10 +1070,10 @@
   ],
   "bookings": [
     {
-      "name": "Night Services",
-      "price": "30 JD ",
-      "image": "https://blog.resortchoice.com/wp-content/uploads/2021/02/cleaning-image.jpg",
-      "id": 1
+      "name": "4 hours + 1 hours free",
+      "price": "150 JD",
+      "image": "https://smesouthafrica.co.za/wp-content/uploads/2022/09/shutterstock_395463352-1024x683.jpg",
+      "id": 2
     }
   ],
   "submit": [

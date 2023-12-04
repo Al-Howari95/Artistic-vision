@@ -10,7 +10,7 @@
 
 * [Presentation](https://www.canva.com/design/DAF1LsUJlEI/ep-qKFtMwuZRyfBw6BFD6Q/edit)
 
-* [Documintation](https://docs.google.com/document/d/13afp0qVdUyOHMGSZmnQoH45OVUi5we3R/edit)
+* [Documintation](https://docs.google.com/document/d/1xsLGSHdeStioXwmBXvuyDEqvwrTHU3Ho/edit)
 
 * [organizations](https://github.com/ORG-master-piece/ORG-master-piece).
 

@@ -16,7 +16,6 @@ const Admin = () => {
   const [photoPreview, setPhotoPreview] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const history = useNavigate();
-  
 
   console.log(page); // fetch products
   useEffect(() => {
@@ -41,7 +40,6 @@ const Admin = () => {
   const toggleSidebar = () => {
     setIsSideOpen(!isSideOpen);
   };
-  
 
   return (
     <div className="flex h-full z-50">
@@ -52,15 +50,10 @@ const Admin = () => {
         }`}
         //   style={{ zIndex: 1000 }} // Set a higher z-index value
       >
-
-        
         <button
-          aria-label="toggle sidebar"
-          className={`${
-            isSideOpen ? "hidden" : "flex"
-          } lg:hidden h-10 w-10 bg-gray-600 absolute right-0 mt-16 -mr-10 items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800`}
-          onClick={() => setIsSideOpen(!isSideOpen)}
-          // onClick={toggleSidebar}
+          aria-label="Toggle sidebar"
+          className="lg:hidden h-10 w-10 bg-gray-600 absolute right-0 mt-6 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800"
+          onClick={toggleSidebar}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +72,7 @@ const Admin = () => {
           aria-label="Close sidebar"
           className={`${
             isSideOpen ? "block" : "hidden"
-          } lg:hidden h-10 w-10 bg-grey-600 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer text-white`}
+          } lg: h-10 w-10 bg-grey-600 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer text-white`}
           onClick={() => setIsSideOpen(!isSideOpen)}
         >
           <svg
@@ -218,6 +211,3 @@ const Admin = () => {
 };
 
 export default Admin;
-
-
-
