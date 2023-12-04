@@ -20,7 +20,7 @@ const Adminlogin = () => {
 
     if (existingToken) {
       // Token exists, you may choose to redirect to the home page or perform any other action
-      window.location.href = "/Adminlogin";
+      window.location.href = "/Admin";
     }
   }, []);
 
@@ -62,7 +62,7 @@ const Adminlogin = () => {
       // Clear any previous error
       setError("");
 
-      const response = await axios.get(`http://localhost:4000/users?email=${email}&password=${password}`);
+      const response = await axios.get(`http://localhost:4000/LoginAdmin?email=${email}&password=${password}`);
       if(response.status == 200){
         if(response.data[0].id== undefined){
           throw new Error("Cheack");
@@ -82,7 +82,7 @@ const Adminlogin = () => {
 
       if (result.isConfirmed) {
         // Redirect to the home page or perform any other action
-        window.location.href = "/Adminlogin";
+        window.location.href = "/Admin";
       }
     }else{
       throw new Error("osama");

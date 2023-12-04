@@ -6,11 +6,11 @@
 
 * [Trello](https://trello.com/b/O4EFuVLb/cleanwave).
 
-* [Project Brief](https://docs.google.com/document/d/1nptja9Ww2b-nT9NFzMfmPKt2rp0dXB2AZhbcXrdMKQc/edit)
+* [Project Brief](https://docs.google.com/document/d/1nptja9Ww2b-nT9NFzMfmPKt2rp0dXB2AZhbcXrdMKQc/edit).
 
-* [Presentation](https://www.canva.com/design/DAF1LsUJlEI/ep-qKFtMwuZRyfBw6BFD6Q/edit)
+* [Presentation](https://www.canva.com/design/DAF1LsUJlEI/ep-qKFtMwuZRyfBw6BFD6Q/edit).
 
-* [Documintation](https://docs.google.com/document/d/1xsLGSHdeStioXwmBXvuyDEqvwrTHU3Ho/edit)
+* [Documintation](https://docs.google.com/document/d/1xsLGSHdeStioXwmBXvuyDEqvwrTHU3Ho/edit).
 
 * [organizations](https://github.com/ORG-master-piece/ORG-master-piece).
 
