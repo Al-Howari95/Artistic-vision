@@ -82,6 +82,7 @@ const Adminlogin = () => {
 
       if (result.isConfirmed) {
         // Redirect to the home page or perform any other action
+        localStorage.setItem('role',1)
         window.location.href = "/Admin";
       }
     }else{
